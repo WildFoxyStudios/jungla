@@ -1,0 +1,300 @@
+
+> frontend@0.1.0 lint
+> eslint
+
+
+C:\Users\echev\Desktop\red_social\frontend\app\events\page.tsx
+  99:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\app\friends\page.tsx
+  131:29  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\app\friends\requests\page.tsx
+  76:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\app\friends\suggestions\page.tsx
+  84:25  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\app\groups\[groupId]\page.tsx
+   18:6   warning  React Hook useEffect has a missing dependency: 'loadPosts'. Either include it or remove the dependency array                                                                                                                                                                             react-hooks/exhaustive-deps
+   94:15  warning  Image elements must have an alt prop, either with meaningful text, or an empty string for decorative images                                                                                                                                                                              jsx-a11y/alt-text
+  134:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\app\live\page.tsx
+    5:17  warning  'Users' is defined but never used                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+   67:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  105:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\app\login\page.tsx
+  42:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\echev\Desktop\red_social\frontend\app\marketplace\page.tsx
+  108:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\app\messages\page.tsx
+   16:6   warning  React Hook useEffect has a missing dependency: 'loadConversations'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  210:19  warning  Image elements must have an alt prop, either with meaningful text, or an empty string for decorative images           jsx-a11y/alt-text
+
+C:\Users\echev\Desktop\red_social\frontend\app\moderation\page.tsx
+   4:25  warning  'X' is defined but never used                                                                                @typescript-eslint/no-unused-vars
+   4:41  warning  'Filter' is defined but never used                                                                           @typescript-eslint/no-unused-vars
+  13:11  error    Unexpected any. Specify a different type                                                                     @typescript-eslint/no-explicit-any
+  14:15  error    Unexpected any. Specify a different type                                                                     @typescript-eslint/no-explicit-any
+  24:16  error    Unexpected any. Specify a different type                                                                     @typescript-eslint/no-explicit-any
+  35:6   warning  React Hook useEffect has a missing dependency: 'loadData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\echev\Desktop\red_social\frontend\app\notifications\page.tsx
+  163:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\app\profile\[userId]\page.tsx
+   21:6   warning  React Hook useEffect has a missing dependency: 'loadProfile'. Either include it or remove the dependency array                                                                                                                                                                           react-hooks/exhaustive-deps
+  119:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\app\register\page.tsx
+  51:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\echev\Desktop\red_social\frontend\app\settings\page.tsx
+  34:64  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\echev\Desktop\red_social\frontend\components\analytics\AnalyticsDashboard.tsx
+  38:6  warning  React Hook useEffect has missing dependencies: 'loadAnalytics' and 'loadSummary'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\echev\Desktop\red_social\frontend\components\calls\VideoCall.tsx
+    4:40  warning  'Phone' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+   26:5   error    Error: Cannot access variable before it is declared
+
+`initCall` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\Users\echev\Desktop\red_social\frontend\components\calls\VideoCall.tsx:26:5
+  24 |
+  25 |   useEffect(() => {
+> 26 |     initCall();
+     |     ^^^^^^^^ `initCall` accessed before it is declared
+  27 |     return () => cleanup();
+  28 |   }, []);
+  29 |
+
+C:\Users\echev\Desktop\red_social\frontend\components\calls\VideoCall.tsx:30:3
+   28 |   }, []);
+   29 |
+>  30 |   const initCall = async () => {
+      |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  31 |     try {
+      | ^^^^^^^^^
+>  32 |       // Obtener stream local (c├ímara y micr├│fono)
+      ÔÇª
+      | ^^^^^^^^^
+>  99 |     }
+      | ^^^^^^^^^
+> 100 |   };
+      | ^^^^^ `initCall` is declared here
+  101 |
+  102 |   const createOffer = async (pc: RTCPeerConnection, websocket: WebSocket) => {
+  103 |     try {                                                                              react-hooks/immutability
+   27:18  error    Error: Cannot access variable before it is declared
+
+`cleanup` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\Users\echev\Desktop\red_social\frontend\components\calls\VideoCall.tsx:27:18
+  25 |   useEffect(() => {
+  26 |     initCall();
+> 27 |     return () => cleanup();
+     |                  ^^^^^^^ `cleanup` accessed before it is declared
+  28 |   }, []);
+  29 |
+  30 |   const initCall = async () => {
+
+C:\Users\echev\Desktop\red_social\frontend\components\calls\VideoCall.tsx:179:3
+  177 |   };
+  178 |
+> 179 |   const cleanup = () => {
+      |   ^^^^^^^^^^^^^^^^^^^^^^^
+> 180 |     if (localStream) {
+      | ^^^^^^^^^^^^^^^^^^^^^^
+> 181 |       localStream.getTracks().forEach((track) => track.stop());
+      ÔÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^
+> 188 |     }
+      | ^^^^^^^^^^^^^^^^^^^^^^
+> 189 |   };
+      | ^^^^^ `cleanup` is declared here
+  190 |
+  191 |   return (
+  192 |     <div className="fixed inset-0 bg-black z-50 flex flex-col">  react-hooks/immutability
+   28:6   warning  React Hook useEffect has missing dependencies: 'cleanup' and 'initCall'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       react-hooks/exhaustive-deps
+   71:7   error    Error: This value cannot be modified
+
+This modifies a variable that React considers immutable.
+
+C:\Users\echev\Desktop\red_social\frontend\components\calls\VideoCall.tsx:71:7
+  69 |       setWs(websocket);
+  70 |
+> 71 |       websocket.onopen = () => {
+     |       ^^^^^^^^^ value cannot be modified
+  72 |         console.log('WebSocket conectado');
+  73 |         if (isInitiator) {
+  74 |           createOffer(pc, websocket);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    react-hooks/immutability
+   78:7   error    Error: This value cannot be modified
+
+This modifies a variable that React considers immutable.
+
+C:\Users\echev\Desktop\red_social\frontend\components\calls\VideoCall.tsx:78:7
+  76 |       };
+  77 |
+> 78 |       websocket.onmessage = async (event) => {
+     |       ^^^^^^^^^ value cannot be modified
+  79 |         const message = JSON.parse(event.data);
+  80 |         await handleSignalingMessage(message, pc, websocket);
+  81 |       };                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           react-hooks/immutability
+  120:14  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-explicit-any
+
+C:\Users\echev\Desktop\red_social\frontend\components\layout\Navbar.tsx
+  6:31  warning  'Bell' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\echev\Desktop\red_social\frontend\components\messages\TypingIndicator.tsx
+  14:34  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\echev\Desktop\red_social\frontend\components\notifications\NotificationBell.tsx
+   22:5   error    Error: Cannot access variable before it is declared
+
+`loadNotifications` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+C:\Users\echev\Desktop\red_social\frontend\components\notifications\NotificationBell.tsx:22:5
+  20 |
+  21 |   useEffect(() => {
+> 22 |     loadNotifications();
+     |     ^^^^^^^^^^^^^^^^^ `loadNotifications` accessed before it is declared
+  23 |     const interval = setInterval(loadNotifications, 30000); // Poll every 30s
+  24 |     return () => clearInterval(interval);
+  25 |   }, []);
+
+C:\Users\echev\Desktop\red_social\frontend\components\notifications\NotificationBell.tsx:27:3
+  25 |   }, []);
+  26 |
+> 27 |   const loadNotifications = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 28 |     try {
+     | ^^^^^^^^^
+> 29 |       const token = localStorage.getItem('token');
+     ÔÇª
+     | ^^^^^^^^^
+> 41 |     }
+     | ^^^^^^^^^
+> 42 |   };
+     | ^^^^^ `loadNotifications` is declared here
+  43 |
+  44 |   const handleMarkAsRead = async (notificationId: string) => {
+  45 |     try {  react-hooks/immutability
+  120:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\components\notifications\NotificationToast.tsx
+  16:7   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\echev\Desktop\red_social\frontend\components\notifications\NotificationToast.tsx:16:7
+  14 |     if (notifications.length > 0) {
+  15 |       const latest = notifications[0];
+> 16 |       setVisible(prev => {
+     |       ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  17 |         // Avoid duplicates
+  18 |         if (prev.some(n => n.data.id === latest.data.id)) {
+  19 |           return prev;  react-hooks/set-state-in-effect
+  46:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\components\posts\PostCard.tsx
+   7:26  warning  'ThumbsUp' is defined but never used                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+   7:59  warning  'Bookmark' is defined but never used                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+  66:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\components\posts\PostCreator.tsx
+  15:22  warning  'setVisibility' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\echev\Desktop\red_social\frontend\components\posts\PostFeed.tsx
+  38:6  warning  React Hook useEffect has a missing dependency: 'loadPosts'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\echev\Desktop\red_social\frontend\components\profile\ProfileHeader.tsx
+  20:11  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  45:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\components\reviews\ProductReviews.tsx
+   21:6   warning  React Hook useEffect has missing dependencies: 'loadReviews' and 'loadSummary'. Either include them or remove the dependency array                                                                                                                                                       react-hooks/exhaustive-deps
+   76:63  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  112:58  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  149:9   warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  176:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\components\search\GlobalSearch.tsx
+    9:10  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+   10:10  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+   11:11  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+   12:10  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+   13:13  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+   14:11  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+   59:6   warning  React Hook useEffect has a missing dependency: 'performSearch'. Either include it or remove the dependency array                                                                                                                                                                         react-hooks/exhaustive-deps
+   75:34  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  170:53  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+  170:61  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                          react/no-unescaped-entities
+  184:27  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  225:27  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\components\shop\Checkout.tsx
+    6:37  warning  'Mail' is defined but never used                                                                                                                                                                                                                                                         @typescript-eslint/no-unused-vars
+  186:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  202:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\components\shop\ShoppingCart.tsx
+  161:7  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\components\stories\StoryEditor.tsx
+  81:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\components\stories\StoryRing.tsx
+  70:34  warning  'idx' is defined but never used                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  83:19  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\components\streaming\LiveStreamPlayer.tsx
+  130:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  171:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\echev\Desktop\red_social\frontend\components\webrtc\VideoGrid.tsx
+  4:10  warning  'Mic' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\echev\Desktop\red_social\frontend\contexts\AuthContext.tsx
+  34:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\echev\Desktop\red_social\frontend\contexts\RealtimeContext.tsx
+   4:69  warning  'MessageEvent' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+  27:7   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\echev\Desktop\red_social\frontend\contexts\RealtimeContext.tsx:27:7
+  25 |     if (!user) {
+  26 |       wsClient.disconnect();
+> 27 |       setIsConnected(false);
+     |       ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  28 |       return;
+  29 |     }
+  30 |  react-hooks/set-state-in-effect
+
+C:\Users\echev\Desktop\red_social\frontend\lib\api-webrtc.ts
+  21:16  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\echev\Desktop\red_social\frontend\lib\stripe.ts
+  46:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\echev\Desktop\red_social\frontend\lib\websocket.ts
+  83:62  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  88:63  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+Ô£û 80 problems (30 errors, 50 warnings)
+
