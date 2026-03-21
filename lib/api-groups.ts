@@ -75,4 +75,25 @@ export const groupApi = {
     );
     return response.data;
   },
+
+  getMyGroups: async (params?: { limit?: number; offset?: number }, token?: string) => {
+    const sessionToken = token || localStorage.getItem('session_token');
+    const response = await axios.get<Group[]>(
+      `${API_URL}/groups/my`,
+      { 
+        headers: { Authorization: `Bearer ${sessionToken}` },
+        params
+      }
+    );
+    return response.data;
+  },
+
+  getGroup: async (groupId: string, token?: string) => {
+    const sessionToken = token || localStorage.getItem('session_token');
+    const response = await axios.get<Group>(
+      `${API_URL}/groups/${groupId}`,
+      { headers: { Authorization: `Bearer ${sessionToken}` } }
+    );
+    return response.data;
+  },
 };

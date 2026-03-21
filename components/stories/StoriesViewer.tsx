@@ -3,86 +3,90 @@
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Plus, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Plus, X, ChevronLeft, ChevronRight, Upload } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { storyApi, Story } from '@/lib/api-stories';
+import { uploadApi } from '@/lib/api-upload';
 
-interface Story {
-  id: string;
-  user_id: string;
-  username: string;
-  profile_picture?: string;
-  media_url: string;
-  media_type: string;
-  created_at: string;
-  is_viewed: boolean;
+interface StoryWithViewed extends Story {
+  is_viewed?: boolean;
+  username?: string;
 }
 
 export default function StoriesViewer() {
   const { user } = useAuth();
-  const [stories, setStories] = useState<Story[]>([]);
-  const [selectedStory, setSelectedStory] = useState<Story | null>(null);
+  const [stories, setStories] = useState<StoryWithViewed[]>([]);
+  const [selectedStory, setSelectedStory] = useState<StoryWithViewed | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [viewedStories, setViewedStories] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     fetchStories();
   }, []);
 
   const fetchStories = async () => {
-    const mockStories: Story[] = [
-      {
-        id: '1',
-        user_id: user?.id || '1',
-        username: user?.username || 'Tu historia',
-        media_url: '/api/placeholder/400/600',
-        media_type: 'image',
-        created_at: new Date().toISOString(),
-        is_viewed: false,
-      },
-      {
-        id: '2',
-        user_id: '2',
-        username: 'María González',
-        media_url: '/api/placeholder/400/600',
-        media_type: 'image',
-        created_at: new Date(Date.now() - 3600000).toISOString(),
-        is_viewed: false,
-      },
-      {
-        id: '3',
-        user_id: '3',
-        username: 'Carlos Ruiz',
-        media_url: '/api/placeholder/400/600',
-        media_type: 'image',
-        created_at: new Date(Date.now() - 7200000).toISOString(),
-        is_viewed: true,
-      },
-      {
-        id: '4',
-        user_id: '4',
-        username: 'Ana López',
-        media_url: '/api/placeholder/400/600',
-        media_type: 'image',
-        created_at: new Date(Date.now() - 10800000).toISOString(),
-        is_viewed: false,
-      },
-      {
-        id: '5',
-        user_id: '5',
-        username: 'Pedro Martínez',
-        media_url: '/api/placeholder/400/600',
-        media_type: 'image',
-        created_at: new Date(Date.now() - 14400000).toISOString(),
-        is_viewed: true,
-      },
-    ];
-    setStories(mockStories);
+    try {
+      const token = localStorage.getItem('session_token');
+      if (!token) return;
+      
+      const data = await storyApi.getActiveStories(token);
+      const storiesWithViewed = data.map(s => ({
+        ...s,
+        username: s.user_name || 'Usuario',
+        is_viewed: viewedStories.has(s.id),
+      }));
+      setStories(storiesWithViewed);
+    } catch (error) {
+      console.error('Error loading stories:', error);
+    }
   };
 
-  const openStory = (story: Story, index: number) => {
+  const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    try {
+      setUploading(true);
+      const token = localStorage.getItem('session_token');
+      if (!token) return;
+
+      const uploadedFiles = await uploadApi.uploadMultiple([file]);
+      if (uploadedFiles.length === 0) return;
+
+      const uploaded = uploadedFiles[0];
+      await storyApi.createStory({
+        media_url: uploaded.url,
+        media_type: uploaded.file_type,
+      }, token);
+
+      await fetchStories();
+      setShowCreateModal(false);
+    } catch (error) {
+      console.error('Error creating story:', error);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const openStory = async (story: StoryWithViewed, index: number) => {
     setSelectedStory(story);
     setCurrentIndex(index);
-    if (!story.is_viewed) {
-      setStories(prev => prev.map(s => s.id === story.id ? { ...s, is_viewed: true } : s));
+    
+    if (!story.is_viewed && !viewedStories.has(story.id)) {
+      try {
+        const token = localStorage.getItem('session_token');
+        if (token) {
+          await storyApi.viewStory(story.id, token);
+          setViewedStories(prev => new Set(prev).add(story.id));
+          setStories(prev => prev.map(s => 
+            s.id === story.id ? { ...s, is_viewed: true } : s
+          ));
+        }
+      } catch (error) {
+        console.error('Error viewing story:', error);
+      }
     }
   };
 
@@ -117,15 +121,15 @@ export default function StoriesViewer() {
         <div className="flex gap-2 overflow-x-auto pb-2">
           <div
             className="flex-shrink-0 w-28 cursor-pointer"
-            onClick={() => {}}
+            onClick={() => setShowCreateModal(true)}
           >
-            <div className="relative h-44 bg-gradient-to-b from-gray-200 to-gray-300 rounded-lg overflow-hidden group hover:scale-105 transition-transform">
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition" />
+            <div className="relative h-44 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg overflow-hidden group hover:scale-105 transition-transform">
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition" />
               <div className="absolute bottom-0 left-0 right-0 p-3">
-                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-2">
-                  <Plus className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mx-auto mb-2 shadow-lg">
+                  <Plus className="w-6 h-6 text-blue-600" />
                 </div>
-                <p className="text-xs text-center font-medium text-white">Crear historia</p>
+                <p className="text-xs text-center font-medium text-white drop-shadow-lg">Crear historia</p>
               </div>
             </div>
           </div>
@@ -226,6 +230,47 @@ export default function StoriesViewer() {
                 alt="Story"
                 className="max-h-full max-w-full object-contain rounded-lg"
               />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showCreateModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg p-6 max-w-md w-full">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-xl font-semibold">Crear historia</h2>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowCreateModal(false)}
+              >
+                <X className="w-5 h-5" />
+              </Button>
+            </div>
+            <div className="space-y-4">
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition">
+                <input
+                  type="file"
+                  accept="image/*,video/*"
+                  onChange={handleFileSelect}
+                  className="hidden"
+                  id="story-upload"
+                  disabled={uploading}
+                />
+                <label
+                  htmlFor="story-upload"
+                  className="cursor-pointer flex flex-col items-center"
+                >
+                  <Upload className="w-12 h-12 text-gray-400 mb-3" />
+                  <p className="text-sm font-medium text-gray-700 mb-1">
+                    {uploading ? 'Subiendo...' : 'Selecciona una foto o video'}
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    o arrastra un archivo aquí
+                  </p>
+                </label>
+              </div>
             </div>
           </div>
         </div>

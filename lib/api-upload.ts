@@ -5,6 +5,7 @@ export interface UploadedFile {
   filename: string;
   size: number;
   mime_type: string;
+  file_type: string;
 }
 
 export const uploadApi = {

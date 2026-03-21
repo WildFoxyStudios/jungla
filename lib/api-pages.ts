@@ -97,6 +97,11 @@ export const pagesApi = {
     return response.data;
   },
 
+  async getFollowedPages(params?: { limit?: number; offset?: number }): Promise<Page[]> {
+    const response = await api.get('/pages/following', { params });
+    return response.data;
+  },
+
   async createPageReview(pageId: string, rating: number, reviewText?: string): Promise<PageReview> {
     const response = await api.post(`/pages/${pageId}/reviews`, {
       rating,
@@ -109,11 +114,6 @@ export const pagesApi = {
     const response = await api.get('/pages/search', {
       params: { q: query, category },
     });
-    return response.data;
-  },
-
-  async getFollowedPages(): Promise<Page[]> {
-    const response = await api.get('/pages/following');
     return response.data;
   },
 };
