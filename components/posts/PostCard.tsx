@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Post } from '@/lib/api-posts';
-import { MoreHorizontal, ThumbsUp, MessageCircle, Share2, Bookmark } from 'lucide-react';
-import ReactionButton from './ReactionButton';
+import { MoreHorizontal, MessageCircle, Share2 } from 'lucide-react';
+import ReactionPicker from './ReactionPicker';
+import CommentSection from './CommentSection';
 import { formatDistanceToNow } from 'date-fns';
 import { es } from 'date-fns/locale';
 
@@ -97,7 +98,7 @@ export default function PostCard({ post, onReact, onComment, onShare }: PostCard
       {/* Actions */}
       <div className="border-t border-b px-2 py-1">
         <div className="flex items-center justify-around">
-          <ReactionButton onReact={onReact} />
+          <ReactionPicker onReact={onReact || (() => {})} />
           <Button
             variant="ghost"
             size="sm"
@@ -125,7 +126,7 @@ export default function PostCard({ post, onReact, onComment, onShare }: PostCard
       {/* Comments Section */}
       {showComments && (
         <div className="p-4 bg-gray-50">
-          <div className="text-sm text-gray-500">Comentarios aquí...</div>
+          <CommentSection postId={post.id} commentsCount={post.comments_count} />
         </div>
       )}
     </Card>
