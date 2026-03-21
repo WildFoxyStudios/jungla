@@ -4,14 +4,15 @@ import { useState, useEffect } from 'react';
 import { settingsApi, type UserSettings } from '@/lib/api-settings';
 import { 
   Shield, Lock, Eye, Users, Bell, Mail, 
-  Globe, MessageSquare, Tag, Clock, Smartphone 
+  Globe, MessageSquare, Tag, Clock, Smartphone,
+  Moon, Sun
 } from 'lucide-react';
 
 export default function SettingsPage() {
   const [settings, setSettings] = useState<UserSettings | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [activeTab, setActiveTab] = useState<'privacy' | 'security' | 'notifications'>('privacy');
+  const [activeTab, setActiveTab] = useState<'privacy' | 'security' | 'notifications' | 'appearance'>('privacy');
 
   useEffect(() => {
     loadSettings();
@@ -96,8 +97,76 @@ export default function SettingsPage() {
             <Bell className="w-5 h-5" />
             Notificaciones
           </button>
+          <button
+            onClick={() => setActiveTab('appearance')}
+            className={`flex-1 px-6 py-4 font-semibold flex items-center justify-center gap-2 ${
+              activeTab === 'appearance'
+                ? 'text-blue-600 border-b-2 border-blue-600'
+                : 'text-gray-600 hover:bg-gray-50'
+            }`}
+          >
+            <Moon className="w-5 h-5" />
+            Apariencia
+          </button>
         </div>
       </div>
+
+      {/* Appearance Settings */}
+      {activeTab === 'appearance' && (
+        <div className="bg-white rounded-lg shadow p-6 space-y-6">
+          <SettingItem
+            icon={<Sun className="w-5 h-5" />}
+            title="Modo oscuro"
+            description="Cambiar entre modo claro y oscuro"
+          >
+            <select
+              value={settings.dark_mode || 'system'}
+              onChange={(e) => updateSetting('dark_mode', e.target.value)}
+              className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              disabled={saving}
+            >
+              <option value="system">Automático (sistema)</option>
+              <option value="light">Claro</option>
+              <option value="dark">Oscuro</option>
+            </select>
+          </SettingItem>
+
+          <SettingToggle
+            icon={<Moon className="w-5 h-5" />}
+            title="Reducir el brillo"
+            description="Reducir el brillo automáticamente por la noche"
+            value={settings.reduce_brightness || false}
+            onChange={(value) => updateSetting('reduce_brightness', value)}
+            disabled={saving}
+          />
+
+          <SettingItem
+            icon={<Clock className="w-5 h-5" />}
+            title="Tamaño de fuente"
+            description="Ajustar el tamaño del texto en la aplicación"
+          >
+            <select
+              value={settings.font_size || 'medium'}
+              onChange={(e) => updateSetting('font_size', e.target.value)}
+              className="px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              disabled={saving}
+            >
+              <option value="small">Pequeño</option>
+              <option value="medium">Medio</option>
+              <option value="large">Grande</option>
+            </select>
+          </SettingItem>
+
+          <SettingToggle
+            icon={<Eye className="w-5 h-5" />}
+            title="Animaciones"
+            description="Mostrar animaciones en la interfaz"
+            value={settings.animations_enabled !== false}
+            onChange={(value) => updateSetting('animations_enabled', value)}
+            disabled={saving}
+          />
+        </div>
+      )}
 
       {/* Privacy Settings */}
       {activeTab === 'privacy' && (
