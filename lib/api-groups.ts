@@ -96,4 +96,16 @@ export const groupApi = {
     );
     return response.data;
   },
+
+  searchGroups: async (query: string, token?: string) => {
+    const sessionToken = token || localStorage.getItem('session_token');
+    const response = await axios.get<Group[]>(
+      `${API_URL}/groups/search`,
+      { 
+        headers: { Authorization: `Bearer ${sessionToken}` },
+        params: { q: query }
+      }
+    );
+    return response.data;
+  },
 };

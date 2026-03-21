@@ -3,39 +3,65 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { profileApi, CompleteProfile } from '@/lib/api-profile';
+import { postsApi, Post } from '@/lib/api-posts';
 import { useAuth } from '@/contexts/AuthContext';
 import ProfileHeader from '@/components/profile/ProfileHeader';
+import PostCard from '@/components/posts/PostCard';
+import PostCreator from '@/components/posts/PostCreator';
 import { Card } from '@/components/ui/card';
+import { Loader2 } from 'lucide-react';
 
 export default function ProfilePage() {
   const params = useParams();
   const userId = params.userId as string;
   const { user } = useAuth();
   const [profile, setProfile] = useState<CompleteProfile | null>(null);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const [postsLoading, setPostsLoading] = useState(true);
 
   const isOwnProfile = user?.id === userId;
 
   useEffect(() => {
-    loadProfile();
+    loadProfileData();
   }, [userId]);
 
-  const loadProfile = async () => {
+  useEffect(() => {
+    const handlePostCreated = () => {
+      loadProfileData();
+    };
+    window.addEventListener('post-created', handlePostCreated);
+    return () => window.removeEventListener('post-created', handlePostCreated);
+  }, [userId]);
+
+  const loadProfileData = async () => {
     try {
       setLoading(true);
-      const data = await profileApi.getProfile(userId);
-      setProfile(data);
+      setPostsLoading(true);
+      
+      const [profileData, postsData] = await Promise.all([
+        profileApi.getProfile(userId),
+        postsApi.getUserPosts(userId, 20, 0),
+      ]);
+      
+      setProfile(profileData);
+      setPosts(postsData);
     } catch (error) {
       console.error('Error loading profile:', error);
     } finally {
       setLoading(false);
+      setPostsLoading(false);
     }
+  };
+
+  const handlePostCreated = () => {
+    loadProfileData();
   };
 
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-        <div className="text-xl">Cargando perfil...</div>
+        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
       </div>
     );
   }
@@ -125,11 +151,29 @@ export default function ProfilePage() {
           </div>
 
           {/* Right Column - Posts */}
-          <div className="col-span-2">
-            <Card className="p-4">
-              <h2 className="font-bold text-xl mb-4">Publicaciones</h2>
-              <p className="text-gray-500 text-center py-8">No hay publicaciones aún</p>
-            </Card>
+          <div className="col-span-2 space-y-4">
+            {isOwnProfile && <PostCreator />}
+            
+            {postsLoading ? (
+              <Card className="p-8 text-center">
+                <Loader2 className="w-8 h-8 animate-spin mx-auto text-blue-600" />
+                <p className="mt-2 text-gray-600">Cargando publicaciones...</p>
+              </Card>
+            ) : posts.length === 0 ? (
+              <Card className="p-8 text-center">
+                <p className="text-gray-500">No hay publicaciones aún</p>
+              </Card>
+            ) : (
+              posts.map((post) => (
+                <PostCard
+                  key={post.id}
+                  post={post}
+                  onReact={(type) => console.log('React:', type)}
+                  onComment={() => console.log('Comment')}
+                  onShare={() => console.log('Share')}
+                />
+              ))
+            )}
           </div>
         </div>
       </div>

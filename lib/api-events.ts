@@ -21,12 +21,13 @@ export interface Event {
 export interface CreateEventRequest {
   name: string;
   description?: string;
-  event_type: 'online' | 'in_person' | 'hybrid';
+  event_type?: 'online' | 'in_person' | 'hybrid';
   start_time: string;
   end_time?: string;
   location?: string;
   latitude?: number;
   longitude?: number;
+  privacy?: 'public' | 'private' | 'friends';
 }
 
 export interface EventAttendee {
