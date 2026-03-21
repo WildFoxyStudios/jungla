@@ -48,7 +48,7 @@ export default function SavedPage() {
       
       // Try to get saved posts
       try {
-        const posts = await postsApi.getFeedPosts(10, 0);
+        const posts = await postsApi.getFeed(10, 0);
         posts.slice(0, 3).forEach((post, idx) => {
           mockSaved.push({
             id: `post-${post.id}`,

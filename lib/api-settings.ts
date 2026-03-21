@@ -14,6 +14,10 @@ export interface UserSettings {
   two_factor_enabled: boolean;
   email_notifications: boolean;
   push_notifications: boolean;
+  dark_mode?: 'system' | 'light' | 'dark';
+  reduce_brightness?: boolean;
+  font_size?: 'small' | 'medium' | 'large';
+  animations_enabled?: boolean;
   updated_at: string;
 }
 
@@ -28,6 +32,10 @@ export interface UpdateSettingsRequest {
   two_factor_enabled?: boolean;
   email_notifications?: boolean;
   push_notifications?: boolean;
+  dark_mode?: 'system' | 'light' | 'dark';
+  reduce_brightness?: boolean;
+  font_size?: 'small' | 'medium' | 'large';
+  animations_enabled?: boolean;
 }
 
 export interface LoginSession {
