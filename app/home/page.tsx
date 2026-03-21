@@ -17,9 +17,17 @@ import {
   Bookmark,
   Clock,
   TrendingUp,
+  Users2,
+  Calendar,
+  Gamepad2,
 } from 'lucide-react';
 import PostCreator from '@/components/posts/PostCreator';
 import PostFeed from '@/components/posts/PostFeed';
+import StoriesViewer from '@/components/stories/StoriesViewer';
+import Shortcuts from '@/components/home/Shortcuts';
+import FriendSuggestions from '@/components/home/FriendSuggestions';
+import Birthdays from '@/components/home/Birthdays';
+import OnlineContacts from '@/components/home/OnlineContacts';
 
 export default function HomePage() {
   const { user, logout } = useAuth();
@@ -84,19 +92,63 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto flex gap-4 px-4 py-4">
           <aside className="hidden lg:block w-64 flex-shrink-0">
             <div className="sticky top-16 space-y-1">
-              <Button variant="ghost" className="w-full justify-start gap-3 px-2">
-                <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center">
-                  <UserCircle className="w-6 h-6" />
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start gap-3 px-2"
+                onClick={() => router.push(`/profile/${user?.id}`)}
+              >
+                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold">
+                  {user?.username?.[0]?.toUpperCase()}
                 </div>
-                <span className="font-medium">{user?.username}</span>
+                <span className="font-medium">{user?.full_name || user?.username}</span>
               </Button>
-              <Button variant="ghost" className="w-full justify-start gap-3 px-2">
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start gap-3 px-2"
+                onClick={() => router.push('/friends')}
+              >
                 <Users className="w-9 h-9 p-2 rounded-lg bg-blue-100 text-blue-600" />
                 <span>Amigos</span>
+              </Button>
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start gap-3 px-2"
+                onClick={() => router.push('/pages')}
+              >
+                <Users2 className="w-9 h-9 p-2 rounded-lg bg-orange-100 text-orange-600" />
+                <span>Páginas</span>
+              </Button>
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start gap-3 px-2"
+                onClick={() => router.push('/groups')}
+              >
+                <Users className="w-9 h-9 p-2 rounded-lg bg-cyan-100 text-cyan-600" />
+                <span>Grupos</span>
+              </Button>
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start gap-3 px-2"
+                onClick={() => router.push('/marketplace')}
+              >
+                <Store className="w-9 h-9 p-2 rounded-lg bg-green-100 text-green-600" />
+                <span>Marketplace</span>
               </Button>
               <Button variant="ghost" className="w-full justify-start gap-3 px-2">
                 <Clock className="w-9 h-9 p-2 rounded-lg bg-blue-100 text-blue-600" />
                 <span>Recuerdos</span>
+              </Button>
+              <Button 
+                variant="ghost" 
+                className="w-full justify-start gap-3 px-2"
+                onClick={() => router.push('/events')}
+              >
+                <Calendar className="w-9 h-9 p-2 rounded-lg bg-red-100 text-red-600" />
+                <span>Eventos</span>
+              </Button>
+              <Button variant="ghost" className="w-full justify-start gap-3 px-2">
+                <Gamepad2 className="w-9 h-9 p-2 rounded-lg bg-pink-100 text-pink-600" />
+                <span>Juegos</span>
               </Button>
               <Button variant="ghost" className="w-full justify-start gap-3 px-2">
                 <Bookmark className="w-9 h-9 p-2 rounded-lg bg-purple-100 text-purple-600" />
@@ -107,9 +159,11 @@ export default function HomePage() {
                 <span>Más reciente</span>
               </Button>
               <hr className="my-2" />
+              <Shortcuts />
+              <hr className="my-2" />
               <Button
                 variant="ghost"
-                className="w-full justify-start gap-3 px-2 text-red-600"
+                className="w-full justify-start gap-3 px-2 text-red-600 hover:bg-red-50"
                 onClick={handleLogout}
               >
                 <LogOut className="w-5 h-5" />
@@ -119,24 +173,17 @@ export default function HomePage() {
           </aside>
 
           <main className="flex-1 max-w-2xl mx-auto">
+            <StoriesViewer />
             <PostCreator />
             <PostFeed />
           </main>
 
           <aside className="hidden xl:block w-80 flex-shrink-0">
-            <div className="sticky top-16">
-              <div className="bg-white rounded-lg shadow p-4">
-                <h3 className="font-semibold mb-3">Contactos</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 rounded-full bg-gray-200" />
-                    <span className="text-sm">Contacto 1</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 rounded-full bg-gray-200" />
-                    <span className="text-sm">Contacto 2</span>
-                  </div>
-                </div>
+            <div className="sticky top-16 space-y-4">
+              <Birthdays />
+              <FriendSuggestions />
+              <div className="bg-white rounded-lg shadow-sm p-4">
+                <OnlineContacts />
               </div>
             </div>
           </aside>

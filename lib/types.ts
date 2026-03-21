@@ -2,6 +2,10 @@ export interface User {
   id: string;
   email: string;
   username: string;
+  full_name?: string;
+  bio?: string;
+  profile_picture?: string;
+  cover_photo?: string;
   created_at: string;
 }
 
