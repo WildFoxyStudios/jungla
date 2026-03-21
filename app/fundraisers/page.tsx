@@ -300,7 +300,7 @@ export default function FundraisersPage() {
                             <Button className="flex-1 bg-green-600 hover:bg-green-700">
                               Donar ahora
                             </Button>
-                            <Button variant="outline" size="icon">
+                            <Button variant="outline" size="sm">
                               <Share2 className="w-4 h-4" />
                             </Button>
                           </div>

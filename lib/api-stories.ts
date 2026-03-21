@@ -20,7 +20,10 @@ export interface CreateStoryRequest {
   media_url?: string;
   media_type?: string;
   text_content?: string;
+  caption?: string;
+  story_type?: string;
   background_color?: string;
+  text_color?: string;
 }
 
 export const storyApi = {
